@@ -15,11 +15,11 @@ model User {
   lastname String
   rut      String
   role     Role   @relation(fields: [roleId], references: [id])
-  roleId   String @unique @db.ObjectId
+  roleId   String @db.ObjectId
 }
 
 model Role {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   roleName String
-  User     User?
+  users    User[]
 }
